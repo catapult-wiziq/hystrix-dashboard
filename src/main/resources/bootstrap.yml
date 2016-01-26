@@ -1,0 +1,26 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: hystrix-dashboard
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        serviceId: config-service
+---
+spring:
+  profiles: dev
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8002/eureka/
+---
+spring:
+  profiles: test
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.17.175:8002/eureka/
